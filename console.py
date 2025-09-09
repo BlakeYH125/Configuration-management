@@ -43,7 +43,6 @@ def PressEnter(event):
 window = Tk()
 window.title("VFS")
 window.geometry("800x400")
-tab_control = ttk.Notebook(window)
 
 frame = Frame(window)
 frame.pack(side=BOTTOM, fill=X, padx=5, pady=5)
