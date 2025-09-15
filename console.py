@@ -1,57 +1,85 @@
 import shlex
 from tkinter import *
-import tkinter.ttk as ttk
 from tkinter.scrolledtext import ScrolledText
+import sys
 
 
-def PressEnter(event):
-    inputLine = entry.get()
+def PressEnter(event=None, line=None):
+    global inputStart
+    if line != None:
+        inputLine = line.strip()
+    else:
+        inputLine = text.get(inputStart, "end-1c").strip()
+
     if len(inputLine) != 0:
         inputLine = shlex.split(inputLine)
         command = inputLine[0]
         output = ""
     else:
         command = ""
+
     match command:
         case "cd":
             if len(inputLine) > 1:
-                output = "C:\\cd Parameters: " + ", ".join(inputLine[1:])
+                output = "Command: cd; Parameters: " + ", ".join(inputLine[1:])
             else:
-                output = "C:\\cd"
+                output = "Command: cd"
 
         case "ls":
             if len(inputLine) > 1:
-                output = "C:\\ls Parameters: " + ", ".join(inputLine[1:])
+                output = "Command: ls; Parameters: " + ", ".join(inputLine[1:])
             else:
-                output = "C:\\ls"
+                output = "Command: ls"
 
         case "":
-            output = "C:\\"
+            output = "Empty line"
 
         case "exit":
             exit(0)
 
         case _:
-            output = "C:\\Неверная команда"
+            output = "Wrong command"
 
-    text.config(state=NORMAL)
-    text.insert(END, output + "\n")
+    text.insert(END, "\n" + output + "\n>>")
     text.see(END)
-    text.config(state=DISABLED)
-    entry.delete(0, END)
+
+    inputStart = text.index("end-1c")
+    return "break"
+
+def PressBackspace(event):
+    if text.compare("insert", "<=", inputStart):
+        return "break"
 
 window = Tk()
-window.title("VFS")
+window.title("MyVFS")
 window.geometry("800x400")
 
-frame = Frame(window)
-frame.pack(side=BOTTOM, fill=X, padx=5, pady=5)
+text = ScrolledText(window, wrap=WORD, height=20)
+text.pack(side=TOP, fill=BOTH, expand=True, padx=5, pady=5)
 
-entry = Entry(frame, width=80)
-entry.pack(side=LEFT, fill=X, expand=True, padx=(0, 5))
+launchParameters = sys.argv[1:]
 
-text = ScrolledText(window, wrap=WORD, height=20, state=DISABLED)
-text.pack(side=TOP, fill=X, padx=5, pady=5)
+text.insert(END, "Launch parameters: " + ", ".join(sys.argv[1:]) + "\n>>")
+inputStart = text.index("end-1c")
 
-entry.bind("<Return>", PressEnter)
+script = None
+
+if len(launchParameters) == 2:
+    VFSPath = launchParameters[0]
+    script = launchParameters[1]
+elif len(launchParameters) == 1:
+    VFSPath = launchParameters[0]
+
+
+if script != None:
+    with open(script, "r") as file:
+        for line in file:
+            line = line.strip()
+            text.insert(END, line)
+            PressEnter(line=line)
+
+
+text.bind("<Return>", PressEnter)
+text.bind("<BackSpace>", PressBackspace)
+
 window.mainloop()

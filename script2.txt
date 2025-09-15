@@ -1,0 +1,9 @@
+ls
+abc
+ls "abc def" zxc
+
+cd
+as
+
+cd mrp "abc def"
+exit
