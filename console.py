@@ -40,7 +40,7 @@ def PressEnter(event=None, line=None):
         case _:
             output = "Wrong command"
 
-    text.insert(END, "\n" + output + "\n>>")
+    text.insert(END, "\n" + output + "\n" + VFSPath)
     text.see(END)
 
     inputStart = text.index("end-1c")
@@ -59,17 +59,18 @@ text.pack(side=TOP, fill=BOTH, expand=True, padx=5, pady=5)
 
 launchParameters = sys.argv[1:]
 
-text.insert(END, "Launch parameters: " + ", ".join(sys.argv[1:]) + "\n>>")
-inputStart = text.index("end-1c")
 
 script = None
+VFSPath = ">>"
 
 if len(launchParameters) == 2:
-    VFSPath = launchParameters[0]
+    VFSPath = launchParameters[0] + ">>"
     script = launchParameters[1]
 elif len(launchParameters) == 1:
     VFSPath = launchParameters[0]
 
+text.insert(END, "Launch parameters: " + ", ".join(sys.argv[1:]) + "\n" + VFSPath)
+inputStart = text.index("end-1c")
 
 if script != None:
     with open(script, "r") as file:
