@@ -63,7 +63,7 @@ launchParameters = sys.argv[1:]
 script = None
 VFSPath = ">>"
 
-if len(launchParameters) == 2:
+if len(launchParameters) >= 2:
     VFSPath = launchParameters[0] + ">>"
     script = launchParameters[1]
 elif len(launchParameters) == 1:
