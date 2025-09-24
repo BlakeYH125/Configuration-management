@@ -1,6 +1,8 @@
-ls
 abc
-ls "abc def" zxc
+
+abc
+
+kas
 
 cd
 as
