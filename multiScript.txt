@@ -1,0 +1,16 @@
+cd
+abc
+
+ls
+ls abc
+cd "abc def"
+
+ls
+
+vfs-info
+
+
+abd
+
+ls
+vfs-info

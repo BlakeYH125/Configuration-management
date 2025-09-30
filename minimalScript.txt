@@ -2,7 +2,10 @@ ls
 abc
 ls "abc def" zxc
 
+vfs-info
+
 cd
 as
 
 cd mrp "abc def"
+vfs-info

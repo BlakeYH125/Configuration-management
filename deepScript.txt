@@ -2,7 +2,7 @@ abc
 
 abc
 
-kas
+vfs-info
 
 cd
 as
@@ -12,7 +12,7 @@ ls "abc asd" sad
 
 ls
 
-cd
+vfs-info
 
 cd "lll"
 
