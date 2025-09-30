@@ -4,6 +4,11 @@ ls "abc def" zxc
 
 vfs-info
 
+ab
+ls
+
+cdsda
+
 cd
 as
 
