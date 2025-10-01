@@ -85,8 +85,10 @@ base_dir = os.path.join(os.path.dirname(__file__))
 path = os.path.join(base_dir, VFSPath)
 with open(path, "rb") as f:
     hasher = hashlib.sha256()
-    while chunk := f.read(8192):
+    chunk = f.read(8192)
+    while chunk:
         hasher.update(chunk)
+        chunk = f.read(8192)
     VFSHash = hasher.hexdigest()
 
 text.insert(END, path + ">")
