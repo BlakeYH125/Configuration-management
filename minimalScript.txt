@@ -1,16 +1,12 @@
-ls
-abc
-ls "abc def" zxc
-
-vfs-info
-
-ab
-ls
-
-cdsda
-
 cd
-as
+cd abc
+ls
+du
+cat abc.txt
 
-cd mrp "abc def"
+abc
 vfs-info
+cat hello_world.txt
+whoami
+ls
+cd

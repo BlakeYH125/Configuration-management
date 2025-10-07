@@ -1,16 +1,18 @@
 cd
-abc
-
 ls
-ls abc
-cd "abc def"
-
+cd docs
+du
+cat resources.txt
+cat src.txt
+cd ..
 ls
+du
 
+dsa
 vfs-info
-
-
-abd
-
+whoami
+cat file1.txt
+cat file2.txt
+cd
 ls
-vfs-info
+

@@ -1,19 +1,20 @@
-abc
-
-abc
-
-vfs-info
-
 cd
-as
-
-abc
-ls "abc asd" sad
-
+ls
+cd docs
+ls
+cd apps
+vfs-info
+cat z.txt
 ls
 
-vfs-info
-
-cd "lll"
-
-cd mrp "abc def"
+cd resources
+cd
+ls
+du
+cat file1.txt
+cat abc.txt
+cd ..
+cd
+cd /
+whoami
+ls
