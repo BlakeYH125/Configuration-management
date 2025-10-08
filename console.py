@@ -34,7 +34,6 @@ def PressEnter(event=None, line=None):
                     else:
                         parts = currentDirectory[len(VFSPath):].strip("/").split("/")
                         currentDirectory = f"{VFSPath}/{'/'.join(parts[:-1])}"
-                        currentDirectory = currentDirectory[:-1]
                         output = ""
                 elif target == "/":
                     currentDirectory = VFSPath
